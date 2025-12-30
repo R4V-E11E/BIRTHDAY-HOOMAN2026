@@ -27,6 +27,19 @@ button:hover { background-color:#880e4f; color:#fce4ec; }
          the simplest days feel magical. I love you not just for who you are, but for how I am when I’m with you.
     </p>
         </h4>
+     <!-- ✨ Sparkles -->
+  <script>
+    function createSparkle() {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.top = Math.random() * 100 + "vh";
+      sparkle.style.animationDuration = 3 + Math.random() * 2 + "s";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 4000);
+    }
+    setInterval(createSparkle, 150);
+  </script>
     <button onclick="location.href='https://r4v-e11e.github.io/BIRTHDAY-HOOMAN2026/page2.html'">Next Page →</button>
 </div>
 </body>
