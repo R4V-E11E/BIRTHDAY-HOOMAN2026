@@ -1,53 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Our Memories</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Book – Page 6</title>
 
 <style>
 body {
-  background:#fce4ec;
+  background-color:#fce4ec;
   font-family:Georgia, serif;
   text-align:center;
-  padding:40px;
+  color:#880e4f;
+  padding:50px;
 }
+
+.container {
+  border:5px solid #880e4f;
+  border-radius:20px;
+  padding:40px;
+  max-width:700px;
+  margin:auto;
+  background:linear-gradient(to bottom right,#fce4ec,#f8bbd0);
+}
+
+button {
+  margin-top:20px;
+  padding:10px 20px;
+  font-size:1em;
+  border:2px solid #880e4f;
+  background-color:#fce4ec;
+  color:#880e4f;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+button:hover {
+  background-color:#880e4f;
+  color:#fce4ec;
+}
+
 video {
   width:90%;
   max-width:600px;
   border-radius:15px;
+  margin-top:20px;
 }
+
 .photos {
   display:flex;
   justify-content:center;
   gap:15px;
-  margin-top:25px;
   flex-wrap:wrap;
+  margin-top:20px;
 }
+
 .photos img {
   width:150px;
   border-radius:15px;
 }
+
+/* ✨ Sparkles */
+.sparkle {
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px #fff;
+  animation:sparkle 4s infinite ease-in-out;
+  opacity:0.6;
+}
+
+@keyframes sparkle {
+  0% { transform:translateY(0) scale(1); opacity:0; }
+  50% { transform:translateY(-30px) scale(1.8); opacity:1; }
+  100% { transform:translateY(-80px) scale(1); opacity:0; }
+}
 </style>
+
+<script>
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 150);
+</script>
+
 </head>
 
 <body>
 
-<h2>Our Memories</h2>
+<div class="container">
+  <h1>Page 6</h1>
+  <p>Our memories together 💖</p>
 
-<video controls>
-  <source src="video/memories.mp4">
-</video>
+  <video controls>
+    <source src="video/memories.mp4" type="video/mp4">
+  </video>
 
-<div class="photos">
-  <img src="images/me1.jpg">
-  <img src="images/me2.jpg">
-  <img src="images/me3.jpg">
-  <img src="images/me4.jpg">
+  <div class="photos">
+    <img src="images/me1.jpg">
+    <img src="images/me2.jpg">
+    <img src="images/me3.jpg">
+    <img src="images/me4.jpg">
+  </div>
+
+  <button onclick="location.href='page5.html'">← Previous Page</button>
+  <button onclick="location.href='index.html'">Back to Start</button>
 </div>
-
-<p>I love you, always 💖</p>
-
-<button onclick="location.href='index.html'">Back to Start</button>
 
 </body>
 </html>
