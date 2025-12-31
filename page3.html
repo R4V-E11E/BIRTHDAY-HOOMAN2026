@@ -42,6 +42,19 @@ button:hover { background-color:#880e4f; color:#fce4ec; }
   margin-bottom: 20px;
 }
 </style>
+       <!-- ✨ Sparkles -->
+   <script>
+    function createSparkle() {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.top = Math.random() * 100 + "vh";
+      sparkle.style.animationDuration = 3 + Math.random() * 2 + "s";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 4000);
+    }
+    setInterval(createSparkle, 150);
+  </script>
 </head>
 <body>
 <div class="container">
