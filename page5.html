@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Page 5 – Game</title>
+<style>
+body {
+  background:#e1bee7;
+  font-family:Georgia, serif;
+  text-align:center;
+  padding:50px;
+}
+input {
+  padding:10px;
+  width:80%;
+  max-width:400px;
+}
+button {
+  margin-top:20px;
+  padding:10px 20px;
+  background:#6a1b9a;
+  color:white;
+  border:none;
+  border-radius:10px;
+}
+#result {
+  margin-top:20px;
+  font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="music/bg.mp3" type="audio/mpeg">
+</audio>
+
+<h2>Page 5 🎮</h2>
+<p>Guess the secret sentence 💌</p>
+
+<input id="answer" placeholder="Type your answer here">
+<br>
+<button onclick="check()">Submit</button>
+
+<p id="result"></p>
+
+<button onclick="location.href='page6.html'">Next Page →</button>
+
+<script>
+function check() {
+  let user = document.getElementById("answer").value;
+  if (user === "I LOVE YOU ALWAYS HOOMAN") {
+    document.getElementById("result").innerHTML = "✅ CORRECT! I LOVE YOU 💖";
+  } else {
+    document.getElementById("result").innerHTML = "❌ Try again, my love";
+  }
+}
+</script>
+
+</body>
+</html>
