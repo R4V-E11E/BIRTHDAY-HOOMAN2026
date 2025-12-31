@@ -1,67 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Page 4 – Grateful</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Book – Page 4</title>
+
 <style>
 body {
-  background:#fce4ec;
+  background-color:#fce4ec;
   font-family:Georgia, serif;
+  text-align:center;
   color:#880e4f;
-  padding:40px;
+  padding:50px;
 }
+
 .container {
   max-width:700px;
   margin:auto;
-  background:#f8bbd0;
-  padding:30px;
+}
+
+.item {
+  background:linear-gradient(to bottom right,#fce4ec,#f8bbd0);
+  border:3px solid #880e4f;
   border-radius:20px;
+  padding:20px;
+  margin:15px 0;
+  font-size:1.1em;
+  box-shadow:0 4px 12px rgba(136,14,79,0.2);
 }
-li {
-  margin:10px 0;
-}
+
 button {
-  margin-top:30px;
+  margin-top:20px;
   padding:10px 20px;
-  border:none;
+  font-size:1em;
+  border:2px solid #880e4f;
+  background-color:#fce4ec;
+  color:#880e4f;
   border-radius:10px;
-  background:#880e4f;
-  color:white;
   cursor:pointer;
 }
-</style>
-</head>
 
+button:hover {
+  background-color:#880e4f;
+  color:#fce4ec;
+}
+
+/* ✨ Sparkles */
+.sparkle {
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px #fff;
+  animation:sparkle 4s infinite ease-in-out;
+  opacity:0.6;
+}
+
+@keyframes sparkle {
+  0% { transform:translateY(0) scale(1); opacity:0; }
+  50% { transform:translateY(-30px) scale(1.8); opacity:1; }
+  100% { transform:translateY(-80px) scale(1); opacity:0; }
+}
+</style>
+
+<script>
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 150);
+</script>
+
+</head>
 <body>
 
-<audio autoplay loop>
-  <source src="music/bg.mp3" type="audio/mpeg">
-</audio>
-
 <div class="container">
-<h2>Page 4 💕</h2>
-<p>I am grateful because you are always on my side…</p>
+  <h1>Page 4 – Grateful for You 💖</h1>
 
-<ol>
-<li>You listen to me</li>
-<li>You calm me down</li>
-<li>You support my dreams</li>
-<li>You protect my heart</li>
-<li>You make me feel safe</li>
-<li>You stay when things are hard</li>
-<li>You believe in me</li>
-<li>You make me smile</li>
-<li>You are patient with me</li>
-<li>You respect me</li>
-<li>You understand my silence</li>
-<li>You never give up on us</li>
-<li>You choose me</li>
-<li>You stand beside me</li>
-<li>You are my home</li>
-</ol>
+  <div class="item">1. You stay by my side</div>
+  <div class="item">2. You support me</div>
+  <div class="item">3. You listen to me</div>
+  <div class="item">4. You care about my feelings</div>
+  <div class="item">5. You make me smile</div>
+  <div class="item">6. You protect my heart</div>
+  <div class="item">7. You believe in me</div>
+  <div class="item">8. You understand me</div>
+  <div class="item">9. You calm me</div>
+  <div class="item">10. You respect me</div>
+  <div class="item">11. You choose me</div>
+  <div class="item">12. You make me feel safe</div>
+  <div class="item">13. You stand with me</div>
+  <div class="item">14. You love sincerely</div>
+  <div class="item">15. You are my home</div>
 
-<button onclick="location.href='https://r4v-e11e.github.io/BIRTHDAY-HOOMAN2026/page2.html'">← Previous Page</button>
-<button onclick="location.href='page5.html'">Next Page →</button>
+  <button onclick="location.href='page3.html'">← Previous Page</button>
+  <button onclick="location.href='page5.html'">Next Page →</button>
 </div>
 
 </body>
