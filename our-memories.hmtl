@@ -2,27 +2,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Page 6 – Memories</title>
+<title>Our Memories</title>
+
 <style>
 body {
   background:#fce4ec;
   font-family:Georgia, serif;
   text-align:center;
-  padding:30px;
+  padding:40px;
 }
 video {
   width:90%;
   max-width:600px;
   border-radius:15px;
 }
-.images {
+.photos {
   display:flex;
   justify-content:center;
   gap:15px;
-  margin-top:30px;
+  margin-top:25px;
   flex-wrap:wrap;
 }
-.images img {
+.photos img {
   width:150px;
   border-radius:15px;
 }
@@ -31,14 +32,13 @@ video {
 
 <body>
 
-<h2>Page 6 💕</h2>
-<p>Our memories together</p>
+<h2>Our Memories</h2>
 
 <video controls>
-  <source src="video/memories.mp4" type="video/mp4">
+  <source src="video/memories.mp4">
 </video>
 
-<div class="images">
+<div class="photos">
   <img src="images/me1.jpg">
   <img src="images/me2.jpg">
   <img src="images/me3.jpg">
@@ -46,6 +46,8 @@ video {
 </div>
 
 <p>I love you, always 💖</p>
+
+<button onclick="location.href='index.html'">Back to Start</button>
 
 </body>
 </html>
