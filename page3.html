@@ -4,68 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Book – Page 3</title>
+
 <style>
-body { background-color:#fce4ec; font-family:'Georgia', serif; text-align:center; color:#880e4f; padding:50px; }
-.container { border:5px solid #880e4f; border-radius:20px; padding:40px; max-width:600px; margin:auto; background:linear-gradient(to bottom right,#fce4ec,#f8bbd0); }
-button { margin-top:30px; padding:10px 20px; font-size:1em; border:2px solid #880e4f; background-color:#fce4ec; color:#880e4f; border-radius:10px; cursor:pointer; }
-button:hover { background-color:#880e4f; color:#fce4ec; }
-      /* ✨ Sparkles */
-    .sparkle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #fff;
-      animation: sparkle 4s infinite ease-in-out;
-      z-index: 1;
-      opacity: 0.6;
-    }
-         
-         @keyframes sparkle {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(-30px) scale(1.8);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-80px) scale(1);
-      }
-        .letter-images {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
+body {
+  background-color:#fce4ec;
+  font-family:Georgia, serif;
+  text-align:center;
+  color:#880e4f;
+  padding:50px;
+}
+
+.container {
+  border:5px solid #880e4f;
+  border-radius:20px;
+  padding:40px;
+  max-width:600px;
+  margin:auto;
+  background:linear-gradient(to bottom right,#fce4ec,#f8bbd0);
+}
+
+button {
+  margin-top:30px;
+  padding:10px 20px;
+  font-size:1em;
+  border:2px solid #880e4f;
+  background-color:#fce4ec;
+  color:#880e4f;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+button:hover {
+  background-color:#880e4f;
+  color:#fce4ec;
+}
+
+/* ✨ Sparkles */
+.sparkle {
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px #fff;
+  animation:sparkle 4s infinite ease-in-out;
+  opacity:0.6;
+}
+
+@keyframes sparkle {
+  0% { transform:translateY(0) scale(1); opacity:0; }
+  50% { transform:translateY(-30px) scale(1.8); opacity:1; }
+  100% { transform:translateY(-80px) scale(1); opacity:0; }
 }
 </style>
-       <!-- ✨ Sparkles -->
-   <script>
-    function createSparkle() {
-      const sparkle = document.createElement("div");
-      sparkle.className = "sparkle";
-      sparkle.style.left = Math.random() * 100 + "vw";
-      sparkle.style.top = Math.random() * 100 + "vh";
-      sparkle.style.animationDuration = 3 + Math.random() * 2 + "s";
-      document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 4000);
-    }
-    setInterval(createSparkle, 150);
-  </script>
+
+<script>
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 150);
+</script>
+
 </head>
+
 <body>
+
 <div class="container">
-    <h1>Page 3</h1>
-    <p>
-        Sayang, I promise to always be by your side,  
-        support your dreams, and love you with all my heart.  
-        You are my everything, and I can’t wait to create more memories together 💖
-    </p>
-    <button onclick="location.href='https://r4v-e11e.github.io/BIRTHDAY-HOOMAN2026/page2.html'">← Previous Page</button>
-    <button onclick="location.href='page4.html'">Next Page →</button>
+  <h1>Page 3</h1>
+  <p>
+    Sayang, I promise to always be by your side,<br>
+    support your dreams, and love you with all my heart.<br>
+    You are my everything 💖
+  </p>
+
+  <button onclick="location.href='page2.html'">← Previous Page</button>
+  <button onclick="location.href='page4.html'">Next Page →</button>
 </div>
+
 </body>
 </html>
