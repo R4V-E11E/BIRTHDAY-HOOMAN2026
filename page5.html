@@ -79,11 +79,22 @@ function createSparkle() {
 setInterval(createSparkle, 150);
 
 function checkAnswer() {
-  let user = document.getElementById("ans").value;
+  let user = document.getElementById("ans").value.trim();
   if (user === "I LOVE YOU ALWAYS HOOMAN") {
     document.getElementById("result").innerHTML = "💖 CORRECT 💖";
+    return true; // correct answer
   } else {
     document.getElementById("result").innerHTML = "Try again, my love 💕";
+    return false; // incorrect answer
+  }
+}
+
+// Prevent going to next page if not answered correctly
+function goNextPage() {
+  if (checkAnswer()) {
+    location.href = 'page6.html';
+  } else {
+    alert("You must answer correctly before going to the next page 💕");
   }
 }
 </script>
@@ -103,7 +114,7 @@ function checkAnswer() {
   <p id="result"></p>
 
   <button onclick="location.href='page4.html'">← Previous Page</button>
-  <button onclick="location.href='page6.html'">Next Page →</button>
+  <button onclick="goNextPage()">Next Page →</button>
 </div>
 
 </body>
