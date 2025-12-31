@@ -5,22 +5,86 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Book – Page 2</title>
 <style>
-body { background-color:#fce4ec; font-family:'Georgia', serif; text-align:center; color:#880e4f; padding:50px; }
-.container { border:5px solid #880e4f; border-radius:20px; padding:40px; max-width:600px; margin:auto; background:linear-gradient(to bottom right,#fce4ec,#f8bbd0); }
-button { margin-top:30px; padding:10px 20px; font-size:1em; border:2px solid #880e4f; background-color:#fce4ec; color:#880e4f; border-radius:10px; cursor:pointer; }
-button:hover { background-color:#880e4f; color:#fce4ec; }
+body { 
+  background-color:#fce4ec; 
+  font-family:'Georgia', serif; 
+  text-align:center; 
+  color:#880e4f; 
+  padding:50px; 
+  overflow-x:hidden;
+}
+
+.container { 
+  border:5px solid #880e4f; 
+  border-radius:20px; 
+  padding:40px; 
+  max-width:600px; 
+  margin:auto; 
+  background:linear-gradient(to bottom right,#fce4ec,#f8bbd0); 
+}
+
+button { 
+  margin-top:30px; 
+  padding:10px 20px; 
+  font-size:1em; 
+  border:2px solid #880e4f; 
+  background-color:#fce4ec; 
+  color:#880e4f; 
+  border-radius:10px; 
+  cursor:pointer; 
+}
+
+button:hover { 
+  background-color:#880e4f; 
+  color:#fce4ec; 
+}
+
+/* Falling cake */
+.cake {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url('images/cake.png'); /* put your cake image here */
+  background-size: cover;
+  pointer-events: none;
+  z-index: 999;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
 </style>
 </head>
 <body>
+
+<!-- Background music -->
+<audio id="bgMusic" src="audio/happy_birthday.mp3" autoplay loop></audio>
+
 <div class="container">
     <h1>Page 2</h1>
     <p>
         Happy Birthday, my love! 🎉💖<br>
-        I hope your day is filled with laughter, joy, and everything that makes you smile.  
+        I hope your day is filled with laughter, joy, and everything that makes you smile.<br>
         You deserve the world, and I will always be here to celebrate every moment with you.
     </p>
-    <button onclick="location.href='https://r4v-e11e.github.io/BIRTHDAY-HOOMAN2026/index.html'">← Previous Page</button>
-    <button onclick="location.href='https://r4v-e11e.github.io/BIRTHDAY-HOOMAN2026/page3.html'">Next Page →</button>
+    <button onclick="location.href='index.html'">← Previous Page</button>
+    <button onclick="location.href='page3.html'">Next Page →</button>
 </div>
+
+<script>
+// Falling cakes
+function createCake() {
+  const cake = document.createElement('div');
+  cake.className = 'cake';
+  cake.style.left = Math.random() * window.innerWidth + 'px';
+  cake.style.animationDuration = (3 + Math.random() * 3) + 's';
+  document.body.appendChild(cake);
+  setTimeout(() => cake.remove(), 6000); // remove after falling
+}
+setInterval(createCake, 500);
+</script>
+
 </body>
 </html>
