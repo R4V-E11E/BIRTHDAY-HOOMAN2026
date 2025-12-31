@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Page 6 – Memories</title>
+<style>
+body {
+  background:#fce4ec;
+  font-family:Georgia, serif;
+  text-align:center;
+  padding:30px;
+}
+video {
+  width:90%;
+  max-width:600px;
+  border-radius:15px;
+}
+.images {
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
+.images img {
+  width:150px;
+  border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Page 6 💕</h2>
+<p>Our memories together</p>
+
+<video controls>
+  <source src="video/memories.mp4" type="video/mp4">
+</video>
+
+<div class="images">
+  <img src="images/me1.jpg">
+  <img src="images/me2.jpg">
+  <img src="images/me3.jpg">
+  <img src="images/me4.jpg">
+</div>
+
+<p>I love you, always 💖</p>
+
+</body>
+</html>
