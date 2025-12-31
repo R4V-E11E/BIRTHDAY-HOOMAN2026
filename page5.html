@@ -1,62 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Page 5 – Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Book – Page 5</title>
+
 <style>
 body {
-  background:#e1bee7;
+  background-color:#fce4ec;
   font-family:Georgia, serif;
   text-align:center;
+  color:#880e4f;
   padding:50px;
 }
+
+.container {
+  border:5px solid #880e4f;
+  border-radius:20px;
+  padding:40px;
+  max-width:600px;
+  margin:auto;
+  background:linear-gradient(to bottom right,#fce4ec,#f8bbd0);
+}
+
 input {
   padding:10px;
   width:80%;
   max-width:400px;
+  border-radius:8px;
+  border:2px solid #880e4f;
+  margin-top:20px;
 }
+
 button {
   margin-top:20px;
   padding:10px 20px;
-  background:#6a1b9a;
-  color:white;
-  border:none;
+  font-size:1em;
+  border:2px solid #880e4f;
+  background-color:#fce4ec;
+  color:#880e4f;
   border-radius:10px;
+  cursor:pointer;
 }
-#result {
-  margin-top:20px;
-  font-size:18px;
+
+button:hover {
+  background-color:#880e4f;
+  color:#fce4ec;
+}
+
+/* ✨ Sparkles */
+.sparkle {
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px #fff;
+  animation:sparkle 4s infinite ease-in-out;
+  opacity:0.6;
+}
+
+@keyframes sparkle {
+  0% { transform:translateY(0) scale(1); opacity:0; }
+  50% { transform:translateY(-30px) scale(1.8); opacity:1; }
+  100% { transform:translateY(-80px) scale(1); opacity:0; }
 }
 </style>
+
+<script>
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 150);
+
+function checkAnswer() {
+  let user = document.getElementById("ans").value;
+  if (user === "I LOVE YOU ALWAYS HOOMAN") {
+    document.getElementById("result").innerHTML = "💖 CORRECT 💖";
+  } else {
+    document.getElementById("result").innerHTML = "Try again, my love 💕";
+  }
+}
+</script>
+
 </head>
 
 <body>
 
-<audio autoplay loop>
-  <source src="music/bg.mp3" type="audio/mpeg">
-</audio>
+<div class="container">
+  <h1>Page 5</h1>
+  <p>Guess the secret sentence 💌</p>
+  <input id="ans" placeholder="Type the secret sentence">
+  <br>
+  <button onclick="checkAnswer()">Submit</button>
+  <p id="result"></p>
 
-<h2>Page 5 🎮</h2>
-<p>Guess the secret sentence 💌</p>
-
-<input id="answer" placeholder="Type your answer here">
-<br>
-<button onclick="check()">Submit</button>
-
-<p id="result"></p>
-<button onclick="location.href='https://r4v-e11e.github.io/BIRTHDAY-HOOMAN2026/page2.html'">← Previous Page</button>
-<button onclick="location.href='page6.html'">Next Page →</button>
-
-<script>
-function check() {
-  let user = document.getElementById("answer").value;
-  if (user === "I LOVE YOU ALWAYS HOOMAN") {
-    document.getElementById("result").innerHTML = "✅ CORRECT! I LOVE YOU 💖";
-  } else {
-    document.getElementById("result").innerHTML = "❌ Try again, my love";
-  }
-}
-</script>
+  <button onclick="location.href='page4.html'">← Previous Page</button>
+  <button onclick="location.href='page6.html'">Next Page →</button>
+</div>
 
 </body>
 </html>
