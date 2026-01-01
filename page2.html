@@ -5,124 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Book – Page 2</title>
 
+<!-- Google fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
 <style>
-body { 
+body {
   margin:0;
   padding:0;
-  background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
-  font-family:'Georgia', serif; 
-  text-align:center; 
-  color:#880e4f; 
+  background: radial-gradient(circle at top, #ffe6f0, #f8bbd0);
+  font-family:'Georgia', serif;
+  color:#880e4f;
   overflow-x:hidden;
   position: relative;
 }
 
 /* Container styling */
-.container { 
-  border:5px solid #880e4f; 
-  border-radius:20px; 
-  padding:40px; 
-  max-width:650px; 
-  margin:60px auto; 
-  background:linear-gradient(to bottom right,#fff0f5,#f8bbd0); 
-  box-shadow: 0 10px 25px rgba(136,14,79,0.2);
+.container {
+  max-width:700px;
+  margin:80px auto;
+  padding:40px;
+  border-radius:20px;
+  background: rgba(255, 248, 240, 0.9); /* soft parchment */
+  border:3px solid #d98fbf;
+  box-shadow: 0 10px 25px rgba(136,14,79,0.15);
+  text-align:center;
   position: relative;
   z-index: 2;
 }
 
-/* Headings and paragraph */
+/* Heading */
 h1 {
-  font-size: 2.5em;
+  font-family: 'Dancing Script', cursive;
+  font-size:3em;
   margin-bottom: 20px;
-  text-shadow: 0 0 10px #ff9ed9, 0 0 25px #ff5eb2;
+  color:#d81b60;
+  text-shadow: 0 0 15px rgba(255,182,193,0.6);
 }
 
+/* Paragraph */
 p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  margin-bottom: 25px;
+  font-size:1.25em;
+  line-height:1.7em;
+  margin-bottom:30px;
 }
 
 /* Buttons */
 button { 
-  margin-top:30px; 
+  margin-top:20px;
   padding:12px 25px; 
-  font-size:1.1em; 
+  font-size:1.1em;
   border:2px solid #880e4f; 
-  background-color:#fce4ec; 
+  background-color:#fce4ec;
   color:#880e4f; 
   border-radius:12px; 
-  cursor:pointer; 
-  transition: all 0.3s;
+  cursor:pointer;
+  transition: all 0.3s ease;
 }
 
-button:hover { 
-  background-color:#880e4f; 
-  color:#fce4ec; 
+button:hover {
+  background-color:#880e4f;
+  color:#fce4ec;
   transform: scale(1.05);
 }
 
-/* Falling cakes/petals */
-.cake {
+/* Falling hearts and sparkles */
+.heart, .sparkle {
   position: absolute;
-  width: 25px;
-  height: 25px;
-  background-image: url('petal.png'); /* replace with your cake or petal image */
-  background-size: cover;
+  width: 15px;
+  height: 15px;
   pointer-events: none;
-  z-index: 1;
-  animation: fall linear infinite;
-  opacity: 0.9;
+  z-index:1;
 }
 
+.heart {
+  background-image: url('petal.png'); /* replace with small heart PNG */
+  background-size: cover;
+}
+
+.sparkle {
+  background: white;
+  border-radius:50%;
+  box-shadow: 0 0 8px #fff;
+}
+
+/* Animation keyframes */
 @keyframes fall {
-  0% { transform: translateY(-50px) rotate(0deg) scale(0.8); opacity:0; }
+  0% { transform: translateY(-30px) rotate(0deg) scale(0.5); opacity:0; }
   30% { opacity:1; }
   100% { transform: translateY(100vh) rotate(360deg) scale(1); opacity:0; }
 }
-
-/* Optional: soft glow behind container */
-.container::before {
-  content: '';
-  position: absolute;
-  top: -20px; left: -20px; right: -20px; bottom: -20px;
-  background: radial-gradient(circle, rgba(255,182,193,0.2), transparent 70%);
-  border-radius: 25px;
-  z-index: -1;
-}
 </style>
 </head>
+
 <body>
 
 <!-- Background music -->
-<audio id="bgMusic" src="happy_birthday.mp3" autoplay loop></audio>
+<audio src="happy_birthday.mp3" autoplay loop></audio>
 
 <div class="container">
-    <h1>Made With Lots of Love 💖</h1>
-    <p>
-       Happy Birthday, my love! 🎂💖<br>
-       I’m so grateful to have you in my life. Being with you fills my days with warmth, laughter, and endless happiness.<br>
-       Thank you for loving me, supporting me, and always standing by my side.<br>
-       I promise to always support your dreams and love you with all my heart. 💕
-    </p>
-    <button onclick="location.href='index.html'">← Previous Page</button>
-    <button onclick="location.href='page3.html'">Next Page →</button>
+  <h1>Happy Birthday, My Love 💖</h1>
+  <p>
+    My dearest Hooman,<br>
+    Every moment with you feels like magic.<br>
+    Your smile lights up my world, your love warms my heart.<br>
+    I’m forever grateful for you, and I promise to love you endlessly.<br>
+    Let’s make today unforgettable, just like every day with you. 💕
+  </p>
+  <button onclick="location.href='index.html'">← Previous Page</button>
+  <button onclick="location.href='page3.html'">Next Page →</button>
 </div>
 
 <script>
-// Falling cakes/petals
-function createCake() {
-  const cake = document.createElement('div');
-  cake.className = 'cake';
-  cake.style.left = Math.random() * window.innerWidth + 'px';
-  cake.style.animationDuration = (4 + Math.random() * 3) + 's';
-  cake.style.transform = `scale(${0.5 + Math.random()}) rotate(${Math.random()*360}deg)`;
-  document.body.appendChild(cake);
-  setTimeout(() => cake.remove(), 7000);
+// Falling hearts & sparkles
+function createFloating() {
+  const isHeart = Math.random() > 0.5;
+  const elem = document.createElement('div');
+  elem.className = isHeart ? 'heart' : 'sparkle';
+  
+  elem.style.left = Math.random() * window.innerWidth + 'px';
+  elem.style.width = elem.style.height = (10 + Math.random() * 15) + 'px';
+  elem.style.animation = `fall ${5 + Math.random() * 5}s linear forwards`;
+  
+  document.body.appendChild(elem);
+  
+  setTimeout(() => elem.remove(), 10000);
 }
 
-// Create multiple cakes/petals at intervals
-setInterval(createCake, 400);
+// Continuous floating hearts & sparkles
+setInterval(createFloating, 300);
 </script>
 
 </body>
