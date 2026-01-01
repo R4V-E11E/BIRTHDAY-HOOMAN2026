@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Book – Page 2</title>
 
-<!-- Google fonts -->
+<!-- Google font for elegant handwriting -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
-body {
+/* BODY STYLING */
+body { 
   margin:0;
   padding:0;
   background: radial-gradient(circle at top, #ffe6f0, #f8bbd0);
@@ -19,21 +20,21 @@ body {
   position: relative;
 }
 
-/* Container styling */
+/* CONTAINER */
 .container {
   max-width:700px;
-  margin:80px auto;
+  margin:100px auto;
   padding:40px;
   border-radius:20px;
-  background: rgba(255, 248, 240, 0.9); /* soft parchment */
+  background: rgba(255,248,240,0.9);
   border:3px solid #d98fbf;
   box-shadow: 0 10px 25px rgba(136,14,79,0.15);
   text-align:center;
   position: relative;
-  z-index: 2;
+  z-index: 2; /* container under floating hearts */
 }
 
-/* Heading */
+/* HEADING */
 h1 {
   font-family: 'Dancing Script', cursive;
   font-size:3em;
@@ -42,14 +43,14 @@ h1 {
   text-shadow: 0 0 15px rgba(255,182,193,0.6);
 }
 
-/* Paragraph */
+/* PARAGRAPH */
 p {
   font-size:1.25em;
   line-height:1.7em;
   margin-bottom:30px;
 }
 
-/* Buttons */
+/* BUTTONS */
 button { 
   margin-top:20px;
   padding:12px 25px; 
@@ -68,13 +69,13 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Falling hearts and sparkles */
+/* FLOATING HEARTS & SPARKLES */
 .heart, .sparkle {
   position: absolute;
   width: 15px;
   height: 15px;
   pointer-events: none;
-  z-index:1;
+  z-index: 10; /* floating above everything */
 }
 
 .heart {
@@ -88,7 +89,7 @@ button:hover {
   box-shadow: 0 0 8px #fff;
 }
 
-/* Animation keyframes */
+/* ANIMATION KEYFRAMES */
 @keyframes fall {
   0% { transform: translateY(-30px) rotate(0deg) scale(0.5); opacity:0; }
   30% { opacity:1; }
@@ -116,7 +117,7 @@ button:hover {
 </div>
 
 <script>
-// Falling hearts & sparkles
+// Create floating hearts & sparkles
 function createFloating() {
   const isHeart = Math.random() > 0.5;
   const elem = document.createElement('div');
@@ -127,7 +128,6 @@ function createFloating() {
   elem.style.animation = `fall ${5 + Math.random() * 5}s linear forwards`;
   
   document.body.appendChild(elem);
-  
   setTimeout(() => elem.remove(), 10000);
 }
 
