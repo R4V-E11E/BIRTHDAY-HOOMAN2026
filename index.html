@@ -4,89 +4,140 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Book – Cover Page</title>
+
 <style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  text-align: center;
+  color: #C71585;
+  overflow-x: hidden;
+}
+
+.container {
+  border:5px solid #880e4f;
+  border-radius:20px;
+  padding:40px;
+  max-width:600px;
+  margin: 50px auto;
+  background: linear-gradient(to bottom right, #fce4ec, #f8bbd0);
+  box-shadow: 0 10px 30px rgba(136,14,79,0.2);
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px #ff8fce, 0 0 30px #ff5eb2;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 15px #ff8fce, 0 0 30px #ff5eb2; }
+  100% { text-shadow: 0 0 25px #ff5eb2, 0 0 50px #ff8fce; }
+}
+
+h4 {
+  font-weight: normal;
+  line-height: 1.6em;
+  color: #880e4f;
+}
+
 .letter-images {
   display: flex;
-  justify-content: center;   /* center horizontally */
+  justify-content: center;
   margin-bottom: 30px;
 }
 
 .letter-photo {
-  width: 60%;                /* control size (50–70% is nice) */
-  max-width: 350px;          /* prevents being too big */
+  width: 70%;
+  max-width: 350px;
   height: auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(136,14,79,0.3);
+  transition: transform 0.3s;
 }
 
-body { background-color:#fce4ec; font-family:'Georgia', serif; text-align:center; color:#C71585; padding:50px; }
-.container { border:5px solid #880e4f; border-radius:20px; padding:40px; max-width:600px; margin:auto; background:linear-gradient(to bottom right,#fce4ec,#f8bbd0); }
-button { margin-top:30px; padding:10px 20px; font-size:1em; border:2px solid #880e4f; background-color:#fce4ec; color:#880e4f; border-radius:10px; cursor:pointer; }
-button:hover { background-color:#880e4f; color:#fce4ec; }
+.letter-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(136,14,79,0.4);
+}
 
-           /* ✨ Sparkles */
-    .sparkle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #fff;
-      animation: sparkle 4s infinite ease-in-out;
-      z-index: 1;
-      opacity: 0.6;
-    }
-         
-         @keyframes sparkle {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(-30px) scale(1.8);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-80px) scale(1);
-      }
-        .letter-images {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
+button {
+  margin-top:30px;
+  padding:10px 25px;
+  font-size:1.2em;
+  border:2px solid #880e4f;
+  background-color:#fce4ec;
+  color:#880e4f;
+  border-radius:15px;
+  cursor:pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color:#880e4f;
+  color:#fce4ec;
+  transform: scale(1.05);
+}
+
+/* ✨ Sparkles */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff;
+  animation: sparkle 4s infinite ease-in-out;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+@keyframes sparkle {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  50% { opacity: 1; transform: translateY(-30px) scale(1.8); }
+  100% { opacity: 0; transform: translateY(-80px) scale(1); }
 }
 </style>
 </head>
 <body>
-            <!-- 🖼️ Two Medium-Sized Images -->
+
+<!-- Sparkles -->
+<script>
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  sparkle.style.animationDuration = (3 + Math.random() * 2) + "s";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 150);
+</script>
+
+<div class="container">
+  <h1>HELLO HOOMAN! 💖</h1>
+
+  <!-- Image -->
   <div class="letter-images">
     <img src="rinaldi.jpeg" alt="Rinaldi" class="letter-photo">
   </div>
-<div class="container">
-    <h1>HELLO HOOMAN!💖</h1>
-       <h4>
-     <p>
-         Do you know ? 💖 Every moment with you feels like a beautiful dream I never want to wake up from.
-        Your smile lights up my world in ways words could never describe. With you by my side, even
-         the simplest days feel magical. I love you not just for who you are, but for how I am when I’m with you.
-    </p>
-        </h4>
-     <!-- ✨ Sparkles -->
-   <script>
-    function createSparkle() {
-      const sparkle = document.createElement("div");
-      sparkle.className = "sparkle";
-      sparkle.style.left = Math.random() * 100 + "vw";
-      sparkle.style.top = Math.random() * 100 + "vh";
-      sparkle.style.animationDuration = 3 + Math.random() * 2 + "s";
-      document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 4000);
-    }
-    setInterval(createSparkle, 150);
-  </script>
-    <button onclick="location.href='https://r4v-e11e.github.io/BIRTHDAY-HOOMAN2026/page2.html'">Next Page →</button>
+
+  <!-- Intro text -->
+  <h4>
+    Do you know? 💖 Every moment with you feels like a beautiful dream I never want to wake up from.<br>
+    Your smile lights up my world in ways words could never describe.<br>
+    With you by my side, even the simplest days feel magical.<br>
+    I love you not just for who you are, but for how I am when I’m with you.
+  </h4>
+
+  <button onclick="location.href='page2.html'">Next Page →</button>
 </div>
+
 </body>
 </html>
