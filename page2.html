@@ -4,56 +4,91 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Book – Page 2</title>
+
 <style>
 body { 
-  background-color:#fce4ec; 
+  margin:0;
+  padding:0;
+  background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
   font-family:'Georgia', serif; 
   text-align:center; 
   color:#880e4f; 
-  padding:50px; 
   overflow-x:hidden;
+  position: relative;
 }
 
+/* Container styling */
 .container { 
   border:5px solid #880e4f; 
   border-radius:20px; 
   padding:40px; 
-  max-width:600px; 
-  margin:auto; 
-  background:linear-gradient(to bottom right,#fce4ec,#f8bbd0); 
+  max-width:650px; 
+  margin:60px auto; 
+  background:linear-gradient(to bottom right,#fff0f5,#f8bbd0); 
+  box-shadow: 0 10px 25px rgba(136,14,79,0.2);
+  position: relative;
+  z-index: 2;
 }
 
+/* Headings and paragraph */
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff9ed9, 0 0 25px #ff5eb2;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.6em;
+  margin-bottom: 25px;
+}
+
+/* Buttons */
 button { 
   margin-top:30px; 
-  padding:10px 20px; 
-  font-size:1em; 
+  padding:12px 25px; 
+  font-size:1.1em; 
   border:2px solid #880e4f; 
   background-color:#fce4ec; 
   color:#880e4f; 
-  border-radius:10px; 
+  border-radius:12px; 
   cursor:pointer; 
+  transition: all 0.3s;
 }
 
 button:hover { 
   background-color:#880e4f; 
   color:#fce4ec; 
+  transform: scale(1.05);
 }
 
-/* Falling petal */
+/* Falling cakes/petals */
 .cake {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-image: url('petal.png'); /* put your petal image here */
+  width: 25px;
+  height: 25px;
+  background-image: url('petal.png'); /* replace with your cake or petal image */
   background-size: cover;
   pointer-events: none;
-  z-index: 999;
+  z-index: 1;
   animation: fall linear infinite;
+  opacity: 0.9;
 }
 
 @keyframes fall {
-  0% { transform: translateY(-50px) rotate(0deg); }
-  100% { transform: translateY(100vh) rotate(360deg); }
+  0% { transform: translateY(-50px) rotate(0deg) scale(0.8); opacity:0; }
+  30% { opacity:1; }
+  100% { transform: translateY(100vh) rotate(360deg) scale(1); opacity:0; }
+}
+
+/* Optional: soft glow behind container */
+.container::before {
+  content: '';
+  position: absolute;
+  top: -20px; left: -20px; right: -20px; bottom: -20px;
+  background: radial-gradient(circle, rgba(255,182,193,0.2), transparent 70%);
+  border-radius: 25px;
+  z-index: -1;
 }
 </style>
 </head>
@@ -63,32 +98,31 @@ button:hover {
 <audio id="bgMusic" src="happy_birthday.mp3" autoplay loop></audio>
 
 <div class="container">
-    <h1>MADE WITH LOTS OF LOVE</h1>
+    <h1>Made With Lots of Love 💖</h1>
     <p>
-       Happy Birthday, my love 🎂💖</p><br>
-      
-      <p> I’m so grateful to have you in my life, and being with you truly makes me happy. 
-       You bring so much warmth, comfort, and laughter into my days. 
-       Thank you for loving me, supporting me, and always standing by my side. 
-       I promise to continue supporting your dreams and loving you with all my heart. 🎂</p><br>
-
-       <p>I love you always, hooman 💕</p>
-  
+       Happy Birthday, my love! 🎂💖<br>
+       I’m so grateful to have you in my life. Being with you fills my days with warmth, laughter, and endless happiness.<br>
+       Thank you for loving me, supporting me, and always standing by my side.<br>
+       I promise to always support your dreams and love you with all my heart. 💕
+    </p>
     <button onclick="location.href='index.html'">← Previous Page</button>
     <button onclick="location.href='page3.html'">Next Page →</button>
 </div>
 
 <script>
-// Falling cakes
+// Falling cakes/petals
 function createCake() {
   const cake = document.createElement('div');
   cake.className = 'cake';
   cake.style.left = Math.random() * window.innerWidth + 'px';
-  cake.style.animationDuration = (3 + Math.random() * 3) + 's';
+  cake.style.animationDuration = (4 + Math.random() * 3) + 's';
+  cake.style.transform = `scale(${0.5 + Math.random()}) rotate(${Math.random()*360}deg)`;
   document.body.appendChild(cake);
-  setTimeout(() => cake.remove(), 6000); // remove after falling
+  setTimeout(() => cake.remove(), 7000);
 }
-setInterval(createCake, 500);
+
+// Create multiple cakes/petals at intervals
+setInterval(createCake, 400);
 </script>
 
 </body>
