@@ -119,8 +119,8 @@ button:hover {
 
 <div class="container">
   <h1>💝 YOUR LOVE LETTER IS ARRIVED✨</h1>
-  <P>TO: FAJAR RINALDI</P> 
-  <P>FROM: YOUR GUUD GURL, SITI NURFARAH</P>
+  <p>TO: FAJAR RINALDI</p> 
+  <p>FROM: YOUR GUUD GURL, SITI NURFARAH</p>
   
   <!-- Step 1: Heart emoji to click -->
   <span class="heart" id="heartEmoji">💌</span>
@@ -129,22 +129,24 @@ button:hover {
   <div class="letter" id="realLetter">
     My Dearest Hooman 💕,<br><br>
     
-  You fill my heart with so much joy and love every single day.<br>
-  I feel so lucky to have you by my side,<br>
-  cheering me on, be there for me, and making life feel magical.<br><br>
-  Every moment with you is my favorite moment,<br>
-  whether we’re laughing, dreaming, or just being together.<br>
-  You are my safe place, my happiness, and my everything.<br><br>
-  I promise to always love you, support you, and be your biggest fan.<br>
-  I can’t wait to create a lifetime of beautiful memories with you.<br><br>
-  Forever yours, 💖
-    
+    You fill my heart with so much joy and love every single day.<br>
+    I feel so lucky to have you by my side,<br>
+    cheering me on, be there for me, and making life feel magical.<br><br>
+    Every moment with you is my favorite moment,<br>
+    whether we’re laughing, dreaming, or just being together.<br>
+    You are my safe place, my happiness, and my everything.<br><br>
+    I promise to always love you, support you, and be your biggest fan.<br>
+    I can’t wait to create a lifetime of beautiful memories with you.<br><br>
+    Forever yours, 💖
   </div>
 
   <br>
   <button onclick="location.href='page3.html'">← Previous Page</button>
   <button onclick="location.href='page5.html'">Next Page →</button>
 </div>
+
+<!-- Background music -->
+<audio id="bgMusic" src="heartwarming.mp3" autoplay loop></audio>
 
 <script>
 // ✨ Continuous sparkles
@@ -172,6 +174,14 @@ heart.addEventListener("click", () => {
     heart.style.display = "none";
     letter.style.display = "block";
   }, 500);
+});
+
+// Optional: Auto play music on page load (some browsers require user interaction)
+window.addEventListener('load', () => {
+  const music = document.getElementById("bgMusic");
+  music.play().catch(() => {
+    console.log("Autoplay prevented by browser. Click anywhere to start music.");
+  });
 });
 </script>
 
