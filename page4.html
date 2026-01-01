@@ -12,11 +12,14 @@ body {
   text-align:center;
   color:#880e4f;
   padding:50px;
+  overflow-x:hidden;
 }
 
 .container {
   max-width:700px;
   margin:auto;
+  position:relative;
+  z-index:2;
 }
 
 .item {
@@ -30,7 +33,7 @@ body {
 }
 
 button {
-  margin-top:20px;
+  margin-top:25px;
   padding:10px 20px;
   font-size:1em;
   border:2px solid #880e4f;
@@ -47,37 +50,40 @@ button:hover {
 
 /* ✨ Sparkles */
 .sparkle {
-  position:absolute;
+  position:fixed;
   width:8px;
   height:8px;
   background:white;
   border-radius:50%;
   box-shadow:0 0 10px #fff;
   animation:sparkle 4s infinite ease-in-out;
-  opacity:0.6;
+  opacity:0.7;
+  z-index:1;
 }
 
 @keyframes sparkle {
-  0% { transform:translateY(0) scale(1); opacity:0; }
-  50% { transform:translateY(-30px) scale(1.8); opacity:1; }
-  100% { transform:translateY(-80px) scale(1); opacity:0; }
+  0% {
+    transform:translateY(0) scale(1);
+    opacity:0;
+  }
+  50% {
+    opacity:1;
+    transform:translateY(-30px) scale(1.8);
+  }
+  100% {
+    opacity:0;
+    transform:translateY(-80px) scale(1);
+  }
 }
 </style>
-
-<script>
-function createSparkle() {
-  const sparkle = document.createElement("div");
-  sparkle.className = "sparkle";
-  sparkle.style.left = Math.random() * 100 + "vw";
-  sparkle.style.top = Math.random() * 100 + "vh";
-  document.body.appendChild(sparkle);
-  setTimeout(() => sparkle.remove(), 4000);
-}
-setInterval(createSparkle, 150);
-</script>
-
 </head>
+
 <body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="soft.mp3" type="audio/mpeg">
+</audio>
 
 <div class="container">
   <h1>Grateful for You 💖</h1>
@@ -98,11 +104,32 @@ setInterval(createSparkle, 150);
   <div class="item">14. You love me sincerely and unconditionally.</div>
   <div class="item">15. You are my home, my safe place, and my favorite person.</div>
 
-
-
   <button onclick="location.href='page3.html'">← Previous Page</button>
   <button onclick="location.href='page5.html'">Next Page →</button>
 </div>
+
+<script>
+// 🎵 Auto background music
+const music = document.getElementById("bgMusic");
+music.volume = 0.4;
+music.play().catch(() => {
+  document.addEventListener("click", () => {
+    music.play();
+  }, { once:true });
+});
+
+// ✨ Sparkles generator
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  sparkle.style.animationDuration = (3 + Math.random() * 2) + "s";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 150);
+</script>
 
 </body>
 </html>
