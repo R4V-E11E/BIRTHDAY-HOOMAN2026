@@ -5,119 +5,153 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Book – Page 2</title>
 
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
-body { 
-  margin:0;
-  padding:0;
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  padding: 0;
   background: radial-gradient(circle at top, #ffe6f0, #f8bbd0);
-  font-family:'Georgia', serif;
-  color:#880e4f;
-  overflow-x:hidden;
+  font-family: Georgia, serif;
+  color: #880e4f;
+  overflow-x: hidden;
 }
 
-/* CONTAINER (LOWER LAYER) */
+/* ===== FLOATING LAYER (PALING ATAS) ===== */
+#floating-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===== CONTAINER ===== */
 .container {
-  max-width:700px;
-  margin:100px auto;
-  padding:40px;
-  border-radius:20px;
-  background: rgba(255,248,240,0.9);
-  border:3px solid #d98fbf;
-  box-shadow: 0 10px 25px rgba(136,14,79,0.15);
-  text-align:center;
+  max-width: 700px;
+  margin: 100px auto;
+  padding: 45px;
+  background: rgba(255,248,240,0.95);
+  border-radius: 25px;
+  border: 3px solid #d98fbf;
+  box-shadow: 0 15px 30px rgba(136,14,79,0.2);
+  text-align: center;
   position: relative;
-  z-index: 1; /* LOWER */
+  z-index: 1;
 }
 
-/* HEADING */
+/* ===== TITLE ===== */
 h1 {
   font-family: 'Dancing Script', cursive;
-  font-size:3em;
-  color:#d81b60;
+  font-size: 3em;
+  color: #d81b60;
+  margin-bottom: 25px;
+  text-shadow: 0 0 15px rgba(255,182,193,0.6);
 }
 
-/* TEXT */
+/* ===== TEXT ===== */
 p {
-  font-size:1.25em;
-  line-height:1.7em;
+  font-size: 1.25em;
+  line-height: 1.8em;
+  margin-bottom: 30px;
 }
 
-/* BUTTONS */
-button { 
-  margin-top:20px;
-  padding:12px 25px;
-  font-size:1.1em;
-  border:2px solid #880e4f;
-  background-color:#fce4ec;
-  color:#880e4f;
-  border-radius:12px;
-  cursor:pointer;
+/* ===== BUTTONS ===== */
+button {
+  padding: 12px 25px;
+  font-size: 1.1em;
+  border-radius: 12px;
+  border: 2px solid #880e4f;
+  background-color: #fce4ec;
+  color: #880e4f;
+  cursor: pointer;
+  margin: 10px;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color:#880e4f;
-  color:#fce4ec;
+  background-color: #880e4f;
+  color: #fce4ec;
+  transform: scale(1.05);
 }
 
-/* FLOATING ITEMS — ABOVE EVERYTHING */
+/* ===== FLOATING OBJECTS ===== */
 .heart, .sparkle {
-  position: fixed;          /* 🔥 IMPORTANT */
+  position: absolute;
   pointer-events: none;
-  z-index: 9999;            /* 🔥 ABOVE CONTAINER */
 }
 
-/* HEART */
 .heart {
-  width: 20px;
-  height: 20px;
-  background-image: url('petal.png');
+  width: 18px;
+  height: 18px;
+  background-image: url('petal.png'); /* pastikan file ada */
   background-size: cover;
 }
 
-/* SPARKLE */
 .sparkle {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: white;
   border-radius: 50%;
-  box-shadow: 0 0 10px white;
+  box-shadow: 0 0 10px #fff;
 }
 
-/* FALLING ANIMATION */
+/* ===== ANIMATION ===== */
 @keyframes fall {
-  0% { transform: translateY(-20px) scale(0.5); opacity:0; }
-  20% { opacity:1; }
-  100% { transform: translateY(100vh) scale(1); opacity:0; }
+  0% {
+    transform: translateY(-30px) rotate(0deg) scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) scale(1);
+    opacity: 0;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- FLOATING LAYER -->
+<div id="floating-layer"></div>
+
+<!-- BACKGROUND MUSIC -->
 <audio src="happy_birthday.mp3" autoplay loop></audio>
 
+<!-- CONTENT -->
 <div class="container">
   <h1>Happy Birthday, My Love 💖</h1>
+
   <p>
     My dearest Hooman,<br>
     Every moment with you feels like magic.<br>
-    Your smile lights up my world, your love warms my heart.<br>
+    Your smile lights up my world, and your love warms my heart.<br>
     I’m forever grateful for you, and I promise to love you endlessly.<br>
     Let’s make today unforgettable, just like every day with you. 💕
   </p>
+
   <button onclick="location.href='index.html'">← Previous Page</button>
   <button onclick="location.href='page3.html'">Next Page →</button>
 </div>
 
+<!-- FLOATING SCRIPT -->
 <script>
 function createFloating() {
   const elem = document.createElement("div");
   elem.className = Math.random() > 0.5 ? "heart" : "sparkle";
+
   elem.style.left = Math.random() * window.innerWidth + "px";
-  elem.style.animation = `fall ${5 + Math.random()*5}s linear`;
-  document.body.appendChild(elem);
+  elem.style.animation = `fall ${5 + Math.random() * 5}s linear forwards`;
+
+  document.getElementById("floating-layer").appendChild(elem);
+
   setTimeout(() => elem.remove(), 10000);
 }
 
