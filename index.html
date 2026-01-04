@@ -13,7 +13,6 @@ body {
   background: linear-gradient(135deg, #fce4ec, #f8bbd0);
   text-align: center;
   color: #C71585;
-  overflow: hidden;
 }
 
 /* ✨ SPARKLES */
@@ -175,6 +174,9 @@ function openGift() {
   for (let i = 0; i < 30; i++) {
     createSparkle();
   }
+
+  // allow scrolling
+  document.body.style.overflow = "auto";
 }
 </script>
 
