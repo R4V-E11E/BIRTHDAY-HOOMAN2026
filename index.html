@@ -42,22 +42,6 @@ body {
   z-index: 0;
 }
 
-/* 🎈 Playground balloons */
-.balloon {
-  position: absolute;
-  width: 30px;
-  height: 40px;
-  border-radius: 50% 50% 50% 50%;
-  background: red;
-  z-index: 0;
-  animation: floatUp 6s linear infinite;
-}
-
-@keyframes floatUp {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-400px); opacity: 0; }
-}
-
 /* ✨ SPARKLES */
 .sparkle {
   position: absolute;
@@ -75,6 +59,22 @@ body {
   0% { opacity: 0; transform: translateY(0) scale(1); }
   50% { opacity: 1; transform: translateY(-30px) scale(1.8); }
   100% { opacity: 0; transform: translateY(-80px) scale(1); }
+}
+
+/* 🎈 Balloons */
+.balloon {
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  border-radius: 50% 50% 50% 50%;
+  z-index: 1;
+  pointer-events: none;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
 }
 
 /* 🐱 CAT WALK */
@@ -187,24 +187,6 @@ button:hover {
 <!-- 🌱 Grass ground -->
 <div class="ground"></div>
 
-<!-- 🎈 Balloons -->
-<div class="balloon" style="left:10%; background:red;"></div>
-<div class="balloon" style="left:40%; background:yellow;"></div>
-<div class="balloon" style="left:70%; background:pink;"></div>
-
-<!-- ✨ SPARKLES SCRIPT -->
-<script>
-function createSparkle() {
-  const s = document.createElement("div");
-  s.className = "sparkle";
-  s.style.left = Math.random() * 100 + "vw";
-  s.style.top = Math.random() * 100 + "vh";
-  document.body.appendChild(s);
-  setTimeout(() => s.remove(), 4000);
-}
-setInterval(createSparkle, 150);
-</script>
-
 <!-- 🐱 CAT -->
 <div id="cat-container" onclick="openGift()">
   <img src="cat-gift.png" alt="Cat with gift">
@@ -226,18 +208,46 @@ setInterval(createSparkle, 150);
 </div>
 
 <script>
+// ✨ Sparkles
+function createSparkle() {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 4000);
+}
+setInterval(createSparkle, 150);
+
+// 🎈 Generate balloons from bottom up
+function createBalloon() {
+  const b = document.createElement("div");
+  b.className = "balloon";
+  b.style.left = Math.random() * 100 + "vw";
+  b.style.bottom = "0px";
+  b.style.background = ["#ff5eb2","#ffb6c1","#ffc107","#ff69b4","#66ccff","#a1ff70"][Math.floor(Math.random()*6)];
+  const duration = 5 + Math.random() * 5; // 5s to 10s
+  b.style.animationDuration = duration + "s";
+  document.body.appendChild(b);
+  setTimeout(() => b.remove(), duration*1000);
+}
+
+// create multiple balloons continuously
+setInterval(createBalloon, 500);
+
+// 🎬 Open gift
 function openGift() {
   document.getElementById("meow").play();
   document.getElementById("cat-container").style.display = "none";
   document.getElementById("mainContent").style.display = "block";
 
-  // ✨ Change background to pink theme
+  // change background
   document.body.style.background = "linear-gradient(135deg, #fdf0f5, #f5c3d1)";
 
-  // Sparkle burst
+  // sparkle burst
   for(let i=0;i<50;i++) createSparkle();
 
-  // Confetti
+  // confetti
   for(let i=0;i<30;i++){
     const c = document.createElement("div");
     c.className = "confetti";
@@ -247,9 +257,9 @@ function openGift() {
     setTimeout(()=>c.remove(),3000);
   }
 
-  // allow scrolling
   document.body.style.overflow = "auto";
 }
 </script>
+
 </body>
 </html>
