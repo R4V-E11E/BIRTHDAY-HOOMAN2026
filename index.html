@@ -13,6 +13,9 @@ body {
   background: linear-gradient(135deg, #fce4ec, #f8bbd0);
   text-align: center;
   color: #C71585;
+  overflow-x: hidden; /* allow vertical scroll */
+  min-height: 100vh;
+  position: relative;
 }
 
 /* ✨ SPARKLES */
@@ -36,8 +39,8 @@ body {
 
 /* 🐱 CAT WALK */
 #cat-container {
-  position: absolute;
-  bottom: 60px;
+  position: fixed; /* change to fixed so it doesn't block scrolling */
+  bottom: 20px;
   left: -200px;
   cursor: pointer;
   animation: walk 8s linear forwards;
@@ -62,6 +65,7 @@ body {
 .cat-text {
   font-size: 1em;
   color: #880e4f;
+  margin-top: 5px;
 }
 
 /* 🎁 MAIN CONTENT */
@@ -175,8 +179,8 @@ function openGift() {
     createSparkle();
   }
 
-  // allow scrolling
-  document.body.style.overflow = "auto";
+  // add extra space to allow scrolling
+  document.body.style.minHeight = "200vh";
 }
 </script>
 
