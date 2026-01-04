@@ -10,13 +10,29 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Georgia', serif;
-  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
   text-align: center;
   color: #C71585;
-  overflow-x: hidden; /* allow vertical scroll */
+  overflow-x: hidden;
   min-height: 100vh;
   position: relative;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  transition: background 1s ease;
 }
+
+/* 🌤 Cute clouds */
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: blur(4px);
+  z-index: 0;
+}
+
+/* Example cloud shapes */
+.cloud1 { width: 100px; height: 60px; top: 50px; left: 20%; }
+.cloud2 { width: 150px; height: 80px; top: 120px; left: 60%; }
+.cloud3 { width: 80px; height: 50px; top: 200px; left: 35%; }
 
 /* ✨ SPARKLES */
 .sparkle {
@@ -39,7 +55,7 @@ body {
 
 /* 🐱 CAT WALK */
 #cat-container {
-  position: fixed; /* change to fixed so it doesn't block scrolling */
+  position: fixed;
   bottom: 20px;
   left: -200px;
   cursor: pointer;
@@ -57,11 +73,6 @@ body {
   animation: bounce 0.8s infinite alternate;
 }
 
-@keyframes bounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(-10px); }
-}
-
 .cat-text {
   font-size: 1em;
   color: #880e4f;
@@ -70,66 +81,85 @@ body {
 
 /* 🎁 MAIN CONTENT */
 .container {
-  border: 5px solid #880e4f;
-  border-radius: 20px;
-  padding: 40px;
-  max-width: 600px;
+  border-radius: 30px;
+  padding: 50px 30px;
+  max-width: 650px;
   margin: 50px auto;
-  background: linear-gradient(to bottom right, #fce4ec, #f8bbd0);
-  box-shadow: 0 10px 30px rgba(136,14,79,0.2);
+  background: linear-gradient(to bottom right, #ffe4ec, #f8bbd0);
+  box-shadow: 0 10px 40px rgba(136,14,79,0.3);
   display: none;
-  animation: fadeIn 1.5s ease forwards;
   position: relative;
   z-index: 3;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+  transition: all 1s ease;
 }
 
 h1 {
-  font-size: 2.5em;
-  text-shadow: 0 0 15px #ff8fce, 0 0 30px #ff5eb2;
+  font-size: 2.8em;
+  text-shadow: 0 0 20px #ff8fce, 0 0 40px #ff5eb2;
+  margin-bottom: 20px;
+  transition: all 1s ease;
 }
 
 h4 {
   font-weight: normal;
-  line-height: 1.6em;
+  line-height: 1.7em;
   color: #880e4f;
 }
 
 .letter-photo {
   width: 70%;
   max-width: 350px;
-  border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(136,14,79,0.3);
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(136,14,79,0.3);
+  margin-bottom: 20px;
 }
 
 button {
   margin-top: 30px;
-  padding: 10px 25px;
+  padding: 12px 30px;
   font-size: 1.2em;
-  border-radius: 15px;
-  border: 2px solid #880e4f;
-  background-color: #fce4ec;
+  border-radius: 20px;
+  border: none;
+  background: #ffb6c1;
   color: #880e4f;
   cursor: pointer;
-  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(136,14,79,0.2);
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background-color: #880e4f;
-  color: #fce4ec;
+  color: #ffe4ec;
   transform: scale(1.05);
+}
+
+/* 🎉 Confetti animation */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #ff5eb2;
+  opacity: 0.8;
+  z-index: 6;
+  pointer-events: none;
+  animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 </style>
 </head>
-
 <body>
 
 <!-- 🎵 Meow sound -->
 <audio id="meow" src="meow.wav"></audio>
+
+<!-- 🌤 Clouds -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
 
 <!-- ✨ SPARKLES SCRIPT -->
 <script>
@@ -152,10 +182,8 @@ setInterval(createSparkle, 150);
 
 <!-- 🎁 REAL CONTENT -->
 <div class="container" id="mainContent">
-  <h1>🎉 MY MEN IS HERE! 🎉</h1>
-
-  <img src="rinaldi.jpeg" class="letter-photo"><br><br>
-
+  <h1>🎉 SURPRISE! 🎉</h1>
+  <img src="rinaldi.jpeg" class="letter-photo"><br>
   <h4>
     Do you know? 💖<br><br>
     Every moment with you feels like a beautiful dream I never want to wake up from.<br>
@@ -163,7 +191,6 @@ setInterval(createSparkle, 150);
     With you by my side, even the simplest days feel magical.<br>
     I love you not just for who you are, but for how I am when I’m with you.
   </h4>
-
   <button onclick="location.href='page2.html'">Next Page →</button>
 </div>
 
@@ -174,15 +201,28 @@ function openGift() {
   document.getElementById("cat-container").style.display = "none";
   document.getElementById("mainContent").style.display = "block";
 
+  // ✨ Change background and container style
+  document.body.style.background = "linear-gradient(135deg, #fdf0f5, #f5c3d1)";
+  const container = document.getElementById("mainContent");
+  container.style.background = "linear-gradient(to bottom right, #ffe4f0, #f8c8d4)";
+  container.style.boxShadow = "0 15px 50px rgba(136,14,79,0.4)";
+
   // sparkle burst 🎁
+  for (let i = 0; i < 50; i++) createSparkle();
+
+  // confetti 🎉
   for (let i = 0; i < 30; i++) {
-    createSparkle();
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = ["#ff5eb2","#ffb6c1","#ffc107","#ff69b4"][Math.floor(Math.random()*4)];
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3000);
   }
 
-  // add extra space to allow scrolling
-  document.body.style.minHeight = "200vh";
+  // allow scrolling
+  document.body.style.overflow = "auto";
 }
 </script>
-
 </body>
 </html>
