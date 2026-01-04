@@ -77,10 +77,10 @@ body {
   100% { transform: translateY(-100vh); opacity: 0; }
 }
 
-/* 🐱 CAT WALK */
+/* 🐱 CAT WALK ON GRASS */
 #cat-container {
   position: fixed;
-  bottom: 140px; /* above the grass */
+  bottom: 120px; /* cat stands on top of grass */
   left: -200px;
   cursor: pointer;
   animation: walk 8s linear forwards;
@@ -179,18 +179,22 @@ button:hover {
 <!-- 🎵 Meow sound -->
 <audio id="meow" src="meow.wav"></audio>
 
-<!-- 🌤 Clouds -->
-<div class="cloud cloud1"></div>
-<div class="cloud cloud2"></div>
-<div class="cloud cloud3"></div>
+<!-- 🏞 Playground wrapper -->
+<div id="playground">
 
-<!-- 🌱 Grass ground -->
-<div class="ground"></div>
+  <!-- 🌤 Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
 
-<!-- 🐱 CAT -->
-<div id="cat-container" onclick="openGift()">
-  <img src="cat-gift.png" alt="Cat with gift">
-  <div class="cat-text">click me 🎁</div>
+  <!-- 🌱 Grass ground -->
+  <div class="ground"></div>
+
+  <!-- 🐱 CAT -->
+  <div id="cat-container" onclick="openGift()">
+    <img src="cat-gift.png" alt="Cat with gift">
+    <div class="cat-text">click me 🎁</div>
+  </div>
 </div>
 
 <!-- 🎁 REAL CONTENT -->
@@ -231,17 +235,19 @@ function createBalloon() {
   document.body.appendChild(b);
   setTimeout(() => b.remove(), duration*1000);
 }
-
-// create multiple balloons continuously
 setInterval(createBalloon, 500);
 
 // 🎬 Open gift
 function openGift() {
   document.getElementById("meow").play();
-  document.getElementById("cat-container").style.display = "none";
+
+  // hide the playground completely
+  document.getElementById("playground").style.display = "none";
+
+  // show main content
   document.getElementById("mainContent").style.display = "block";
 
-  // change background
+  // change background to pink theme
   document.body.style.background = "linear-gradient(135deg, #fdf0f5, #f5c3d1)";
 
   // sparkle burst
@@ -257,9 +263,9 @@ function openGift() {
     setTimeout(()=>c.remove(),3000);
   }
 
+  // allow scrolling to button
   document.body.style.overflow = "auto";
 }
 </script>
-
 </body>
 </html>
