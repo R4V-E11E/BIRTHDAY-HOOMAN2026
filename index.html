@@ -13,31 +13,81 @@ body {
   background: linear-gradient(135deg, #fce4ec, #f8bbd0);
   text-align: center;
   color: #C71585;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
+/* ✨ SPARKLES */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff;
+  opacity: 0.6;
+  animation: sparkle 4s infinite;
+  z-index: 1;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: translateY(0) scale(1); }
+  50% { opacity: 1; transform: translateY(-30px) scale(1.8); }
+  100% { opacity: 0; transform: translateY(-80px) scale(1); }
+}
+
+/* 🐱 CAT WALK */
+#cat-container {
+  position: absolute;
+  bottom: 60px;
+  left: -200px;
+  cursor: pointer;
+  animation: walk 8s linear forwards;
+  z-index: 5;
+}
+
+@keyframes walk {
+  from { left: -200px; }
+  to { left: 50%; transform: translateX(-50%); }
+}
+
+#cat-container img {
+  width: 160px;
+  animation: bounce 0.8s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+.cat-text {
+  font-size: 1em;
+  color: #880e4f;
+}
+
+/* 🎁 MAIN CONTENT */
 .container {
-  border:5px solid #880e4f;
-  border-radius:20px;
-  padding:40px;
-  max-width:600px;
+  border: 5px solid #880e4f;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
   margin: 50px auto;
   background: linear-gradient(to bottom right, #fce4ec, #f8bbd0);
   box-shadow: 0 10px 30px rgba(136,14,79,0.2);
+  display: none;
+  animation: fadeIn 1.5s ease forwards;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 h1 {
   font-size: 2.5em;
-  margin-bottom: 20px;
   text-shadow: 0 0 15px #ff8fce, 0 0 30px #ff5eb2;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  0% { text-shadow: 0 0 15px #ff8fce, 0 0 30px #ff5eb2; }
-  100% { text-shadow: 0 0 25px #ff5eb2, 0 0 50px #ff8fce; }
 }
 
 h4 {
@@ -46,92 +96,65 @@ h4 {
   color: #880e4f;
 }
 
-.letter-images {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
 .letter-photo {
   width: 70%;
   max-width: 350px;
-  height: auto;
   border-radius: 20px;
   box-shadow: 0 6px 18px rgba(136,14,79,0.3);
-  transition: transform 0.3s;
-}
-
-.letter-photo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(136,14,79,0.4);
 }
 
 button {
-  margin-top:30px;
-  padding:10px 25px;
-  font-size:1.2em;
-  border:2px solid #880e4f;
-  background-color:#fce4ec;
-  color:#880e4f;
-  border-radius:15px;
-  cursor:pointer;
-  transition: all 0.3s;
+  margin-top: 30px;
+  padding: 10px 25px;
+  font-size: 1.2em;
+  border-radius: 15px;
+  border: 2px solid #880e4f;
+  background-color: #fce4ec;
+  color: #880e4f;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background-color:#880e4f;
-  color:#fce4ec;
+  background-color: #880e4f;
+  color: #fce4ec;
   transform: scale(1.05);
-}
-
-/* ✨ Sparkles */
-.sparkle {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #fff;
-  animation: sparkle 4s infinite ease-in-out;
-  z-index: 1;
-  opacity: 0.6;
-}
-
-@keyframes sparkle {
-  0% { transform: translateY(0) scale(1); opacity: 0; }
-  50% { opacity: 1; transform: translateY(-30px) scale(1.8); }
-  100% { opacity: 0; transform: translateY(-80px) scale(1); }
 }
 </style>
 </head>
+
 <body>
 
-<!-- Sparkles -->
+<!-- 🎵 Meow sound -->
+<audio id="meow" src="meow.mp3"></audio>
+
+<!-- ✨ SPARKLES SCRIPT -->
 <script>
 function createSparkle() {
-  const sparkle = document.createElement("div");
-  sparkle.className = "sparkle";
-  sparkle.style.left = Math.random() * 100 + "vw";
-  sparkle.style.top = Math.random() * 100 + "vh";
-  sparkle.style.animationDuration = (3 + Math.random() * 2) + "s";
-  document.body.appendChild(sparkle);
-  setTimeout(() => sparkle.remove(), 4000);
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 4000);
 }
 setInterval(createSparkle, 150);
 </script>
 
-<div class="container">
+<!-- 🐱 CAT -->
+<div id="cat-container" onclick="openGift()">
+  <img src="cat-gift.png" alt="Cat with gift">
+  <div class="cat-text">click me 🎁</div>
+</div>
+
+<!-- 🎁 REAL CONTENT -->
+<div class="container" id="mainContent">
   <h1>🎉 MY MEN IS HERE! 🎉</h1>
 
-  <!-- Image -->
-  <div class="letter-images">
-    <img src="rinaldi.jpeg" alt="Rinaldi" class="letter-photo">
-  </div>
+  <img src="rinaldi.jpeg" class="letter-photo"><br><br>
 
-  <!-- Intro text -->
   <h4>
     Do you know? 💖<br><br>
-    
     Every moment with you feels like a beautiful dream I never want to wake up from.<br>
     Your smile lights up my world in ways words could never describe.<br>
     With you by my side, even the simplest days feel magical.<br>
@@ -140,6 +163,20 @@ setInterval(createSparkle, 150);
 
   <button onclick="location.href='page2.html'">Next Page →</button>
 </div>
+
+<!-- 🎬 OPEN GIFT -->
+<script>
+function openGift() {
+  document.getElementById("meow").play();
+  document.getElementById("cat-container").style.display = "none";
+  document.getElementById("mainContent").style.display = "block";
+
+  // sparkle burst 🎁
+  for (let i = 0; i < 30; i++) {
+    createSparkle();
+  }
+}
+</script>
 
 </body>
 </html>
