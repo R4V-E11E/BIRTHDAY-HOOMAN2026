@@ -77,10 +77,10 @@ body {
   100% { transform: translateY(-100vh); opacity: 0; }
 }
 
-/* 🐱 CAT WALK ON GRASS */
+/* 🐱 CAT ON GRASS */
 #cat-container {
   position: fixed;
-  bottom: 120px; /* cat stands on top of grass */
+  bottom: 120px; /* sits on top of grass */
   left: -200px;
   cursor: pointer;
   animation: walk 8s linear forwards;
@@ -94,7 +94,13 @@ body {
 
 #cat-container img {
   width: 160px;
+  display: block;
   animation: bounce 0.8s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); } /* slight bounce */
 }
 
 .cat-text {
@@ -197,7 +203,7 @@ button:hover {
   </div>
 </div>
 
-<!-- 🎁 REAL CONTENT -->
+<!-- 🎁 MAIN CONTENT -->
 <div class="container" id="mainContent">
   <h1>🎉 SURPRISE! 🎉</h1>
   <img src="rinaldi.jpeg" class="letter-photo"><br>
